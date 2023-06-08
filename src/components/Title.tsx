@@ -1,8 +1,8 @@
 function Title() {
   return (
-    <title>
+    <h1>
       Gerenciador de senhas
-    </title>
+    </h1>
   );
 }
 
