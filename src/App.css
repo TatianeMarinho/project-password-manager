@@ -1,3 +1,22 @@
+form {
+display: flex;
+flex-direction: column;
+}
+
+label{
+  padding:5px;
+}
+#message-password{
+  font-size: small;
+  margin-left: 45px;
+}
+
+#message-password p{
+  padding: 0;
+  margin: 0;
+  font-size: small;
+}
+
 .valid-password-check {
   color: #aeffb6;
 }

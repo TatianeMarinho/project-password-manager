@@ -12,6 +12,11 @@ function Form({ setDisplayForm }: FormProps) {
     url: '',
   };
 
+  const regexStringNumber = /^(?=.*[a-zA-Z])(?=.*[0-9])/;
+  const regexSpecial = /[^a-zA-Z 0-9]+/;
+  const valid = 'valid-password-check';
+  const invalid = 'invalid-password-check';
+
   const [form, setForm] = useState(INICIAL_STATES);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -58,6 +63,21 @@ function Form({ setDisplayForm }: FormProps) {
           value={ form.password }
           onChange={ handleChange }
         />
+        <section id="message-password">
+          Sua senha deve:
+          <p className={ form.password.length > 7 ? valid : invalid }>
+            Possuir 8 ou mais caracteres
+          </p>
+          <p className={ form.password.length < 15 ? valid : invalid }>
+            Possuir até 16 caracteres
+          </p>
+          <p className={ regexStringNumber.test(form.password) ? valid : invalid }>
+            Possuir letras e números
+          </p>
+          <p className={ regexSpecial.test(form.password) ? valid : invalid }>
+            Possuir algum caractere especial
+          </p>
+        </section>
       </label>
       <label>
         URL
