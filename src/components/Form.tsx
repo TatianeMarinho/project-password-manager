@@ -1,4 +1,8 @@
-function Form() {
+type FormProps = {
+  setDisplayForm: React.Dispatch<React.SetStateAction<boolean>>
+};
+
+function Form({ setDisplayForm }: FormProps) {
   return (
     <form action="submit">
       <label>
@@ -18,7 +22,7 @@ function Form() {
         <input type="text" />
       </label>
       <button>Cadastrar</button>
-      <button>Cancelar</button>
+      <button type="button" onClick={ () => setDisplayForm(true) }>Cancelar</button>
     </form>
   );
 }
