@@ -2,13 +2,19 @@ import { FormTypesId } from './types';
 
 type NewServiceProp = {
   list: FormTypesId;
+  handleDelete: ((id: string | number) => void)
 };
 
-function NewService({ list }: NewServiceProp) {
-  const { service, login, password, url } = list;
+function NewService({ list, handleDelete }: NewServiceProp) {
+  const { service, login, password, url, id } = list;
 
   return (
-    <section>
+    <section className="service">
+      <div className="right">
+        <div className="delete">
+          <button data-testid="remove-btn" onClick={ () => handleDelete(id) }>x</button>
+        </div>
+      </div>
       <a href={ url }>
         { service }
       </a>
@@ -23,6 +29,7 @@ function NewService({ list }: NewServiceProp) {
         { password }
       </p>
     </section>
+
   );
 }
 

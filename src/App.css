@@ -24,3 +24,29 @@ label{
 .invalid-password-check {
   color: #f58989;
 }
+
+.list-service {
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 4fr 4fr;
+  border: 3px solid #f58989;
+}
+
+.service {
+  padding: 10px;
+  display: subgrid;
+  border: 4px solid #d65959;
+}
+
+.right{
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.delete {
+  padding: 1px;
+  width: 15px;
+  height: 15px;  
+  text-align: center;
+}
