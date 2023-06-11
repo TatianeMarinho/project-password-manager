@@ -9,11 +9,12 @@ function NewService({ list }: NewServiceProp) {
 
   return (
     <section>
-      <a href={ url } rel="noreferrer noopener" target="_blank">
+      <a href={ url }>
         { service }
       </a>
       <p>
         Login:
+        {' '}
         { login }
       </p>
       <p>

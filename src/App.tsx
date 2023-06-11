@@ -13,11 +13,14 @@ function App() {
     setDisplayForm(false);
   }
 
-  function handlePassword(form: FormTypes) {
+  const handlePassword = (event: React.FormEvent<HTMLFormElement>, form: FormTypes) => {
+    event.preventDefault();
     const passwordId = { ...form, id: Date.now() };
 
-    setpasswordArray([...passwordArray, passwordId]);
-  }
+    setpasswordArray([...passwordArray, { ...passwordId }]);
+
+    setDisplayForm(true);
+  };
 
   return (
     <main>
@@ -27,7 +30,7 @@ function App() {
           ? (<button onClick={ handleClick }>Cadastrar nova senha</button>)
           : (<Form
               setDisplayForm={ setDisplayForm }
-              handleSubmit={ (form) => handlePassword(form) }
+              handleForm={ handlePassword }
           />)
       }
       {
