@@ -3,10 +3,10 @@ import { INICIAL_STATES, FormTypes } from './types';
 
 type FormProps = {
   setDisplayForm: React.Dispatch<React.SetStateAction<boolean>>
-  submit: (form: FormTypes) => void;
+  handleSubmit: (formType: FormTypes) => void;
 };
 
-function Form({ setDisplayForm, submit }: FormProps) {
+function Form({ setDisplayForm, handleSubmit }: FormProps) {
   const regexStringNumber = /^(?=.*[a-zA-Z])(?=.*[0-9])/;
   const regexSpecial = /[^a-zA-Z 0-9]+/;
   const valid = 'valid-password-check';
@@ -25,20 +25,20 @@ function Form({ setDisplayForm, submit }: FormProps) {
   function validateForm() {
     const validService = form.service.length > 0;
     const validLogin = form.login.length > 0;
-    const regex = /^(?=.*[a-zA-Z0-9])(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z0-9\d@$!%*?&]{8,16}$/;
+    const regex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,16}$/;
     const validPassword = regex.test(form.password);
     return validService && validLogin && validPassword;
   }
 
-  function onSubmit(event: React.FormEvent) {
+  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    handleSubmit(form);
     setDisplayForm(true);
     setForm(INICIAL_STATES);
-    submit(form);
   }
 
   return (
-    <form onSubmit={ onSubmit }>
+    <form onSubmit={ (event) => onSubmit(event) }>
       <label>
         Nome do serviço
         <input

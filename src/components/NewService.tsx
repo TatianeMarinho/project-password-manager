@@ -1,20 +1,19 @@
-import FormTypes from './types';
+import { FormTypesId } from './types';
 
 type NewServiceProp = {
-  typeService: FormTypes;
+  list: FormTypesId;
 };
 
-function NewService({ typeService }: NewServiceProp) {
-  const { service, login, password, url } = typeService;
+function NewService({ list }: NewServiceProp) {
+  const { service, login, password, url } = list;
 
   return (
     <section>
-      <a href={ url } target="_blank" rel="noreferrer noopener">
+      <a href={ url } rel="noreferrer noopener" target="_blank">
         { service }
       </a>
       <p>
         Login:
-        {' '}
         { login }
       </p>
       <p>

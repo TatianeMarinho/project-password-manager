@@ -4,7 +4,7 @@ export type FormTypes = {
   password: string;
   url: string;
 };
-
+export type FormTypesId = FormTypes & { id: number | string };
 export const INICIAL_STATES = {
   service: '',
   login: '',
