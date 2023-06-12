@@ -25,11 +25,11 @@ function Form({ setDisplayForm, handleForm }: FormProps) {
   function validateForm() {
     const validService = form.service.length > 0;
     const validLogin = form.login.length > 0;
-    const regex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,16}$/;
+    const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^\w\s]).+$/;
     const validPassword = regex.test(form.password);
     return validService && validLogin && validPassword;
   }
-  console.log(form.url);
+
   return (
     <form onSubmit={ (event) => handleForm(event, form) }>
       <label>
