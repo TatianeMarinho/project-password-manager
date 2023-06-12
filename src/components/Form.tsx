@@ -26,7 +26,8 @@ function Form({ setDisplayForm, handleForm }: FormProps) {
     const validService = form.service.length > 0;
     const validLogin = form.login.length > 0;
     const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[^\w\s]).+$/;
-    const validPassword = regex.test(form.password);
+    const validPassword = regex.test(form.password)
+      && form.password.length > 7 && form.password.length < 15;
     return validService && validLogin && validPassword;
   }
 
