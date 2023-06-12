@@ -29,7 +29,7 @@ function Form({ setDisplayForm, handleForm }: FormProps) {
     const validPassword = regex.test(form.password);
     return validService && validLogin && validPassword;
   }
-
+  console.log(form.url);
   return (
     <form onSubmit={ (event) => handleForm(event, form) }>
       <label>
@@ -58,28 +58,34 @@ function Form({ setDisplayForm, handleForm }: FormProps) {
           value={ form.password }
           onChange={ handleChange }
         />
-        <section id="message-password">
-          Sua senha deve:
-          <p className={ form.password.length > 7 ? valid : invalid }>
-            Possuir 8 ou mais caracteres
-          </p>
-          <p className={ form.password.length < 15 ? valid : invalid }>
-            Possuir até 16 caracteres
-          </p>
-          <p className={ regexStringNumber.test(form.password) ? valid : invalid }>
-            Possuir letras e números
-          </p>
-          <p className={ regexSpecial.test(form.password) ? valid : invalid }>
-            Possuir algum caractere especial
-          </p>
-        </section>
       </label>
-      <label>
+      <label htmlFor="url">
         URL
-        <input type="text" name="url" />
+        <input
+          type="text"
+          name="url"
+          id="url"
+          value={ form.url }
+          onChange={ handleChange }
+        />
       </label>
       <button type="submit" disabled={ !validateForm() }>Cadastrar</button>
       <button type="button" onClick={ () => setDisplayForm(true) }>Cancelar</button>
+      <section id="message-password">
+        Sua senha deve:
+        <p className={ form.password.length > 7 ? valid : invalid }>
+          Possuir 8 ou mais caracteres
+        </p>
+        <p className={ form.password.length < 15 ? valid : invalid }>
+          Possuir até 16 caracteres
+        </p>
+        <p className={ regexStringNumber.test(form.password) ? valid : invalid }>
+          Possuir letras e números
+        </p>
+        <p className={ regexSpecial.test(form.password) ? valid : invalid }>
+          Possuir algum caractere especial
+        </p>
+      </section>
     </form>
   );
 }

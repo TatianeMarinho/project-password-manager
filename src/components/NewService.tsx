@@ -2,33 +2,43 @@ import { FormTypesId } from './types';
 
 type NewServiceProp = {
   list: FormTypesId;
-  handleDelete: ((id: string | number) => void)
+  handleDelete: (() => void);
 };
 
 function NewService({ list, handleDelete }: NewServiceProp) {
-  const { service, login, password, url, id } = list;
+  const { service, login, password, url } = list;
 
   return (
-    <section className="service">
-      <div className="right">
-        <div className="delete">
-          <button data-testid="remove-btn" onClick={ () => handleDelete(id) }>x</button>
-        </div>
+    <>
+      <div className="delete">
+        <button data-testid="remove-btn" onClick={ () => handleDelete() }>x</button>
       </div>
-      <a href={ url }>
+      <a href={ url } target="_blank" rel="noreferrer">
         { service }
       </a>
-      <p>
+      <div>
         Login:
         {' '}
-        { login }
-      </p>
-      <p>
+        <span>
+          { login }
+        </span>
+      </div>
+      <div>
         Senha:
         {' '}
-        { password }
-      </p>
-    </section>
+        <span>
+          { password }
+        </span>
+      </div>
+      <label>
+        Esconder senhas
+        <input
+          type="checkbox"
+          name="screenPassword"
+          id="screenPassword"
+        />
+      </label>
+    </>
 
   );
 }

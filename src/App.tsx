@@ -32,7 +32,7 @@ function App() {
       <Title />
       {
         displayForm
-          ? (<button onClick={ handleClick }>Cadastrar nova senha</button>)
+          ? (<button onClick={ handleClick }>cadastrar nova senha</button>)
           : (<Form
               setDisplayForm={ setDisplayForm }
               handleForm={ handlePassword }
@@ -46,7 +46,7 @@ function App() {
               (password) => (<NewService
                 key={ password.id }
                 list={ password }
-                handleDelete={ handleDeleteService }
+                handleDelete={ () => handleDeleteService(password.id) }
               />),
             ))
         }
