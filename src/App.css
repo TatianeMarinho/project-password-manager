@@ -7,17 +7,6 @@ label {
   padding: 5px;
 }
 
-#message-password {
-  font-size: small;
-  margin-left: 45px;
-}
-
-#message-password p {
-  font-size: small;
-  margin: 0;
-  padding: 0;
-}
-
 .valid-password-check {
   color: #aeffb6;
 }
@@ -27,7 +16,7 @@ label {
 }
 
 .list-service {
-  display: grid;
   border: 3px solid #f58989;
+  display: grid;
   padding: 5px;
 }
