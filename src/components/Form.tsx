@@ -13,6 +13,7 @@ function Form({ setDisplayForm, handleForm }: FormProps) {
   const invalid = 'invalid-password-check';
 
   const [form, setForm] = useState(INICIAL_STATES);
+  const [screenPassword, setScreenPassword] = useState(true);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -54,11 +55,25 @@ function Form({ setDisplayForm, handleForm }: FormProps) {
       <label>
         Senha
         <input
-          type="password"
+          type={
+            screenPassword
+              ? 'password'
+              : 'text'
+          }
           name="password"
           value={ form.password }
           onChange={ handleChange }
         />
+      </label>
+      <label htmlFor="button-password">
+        <button
+          id="button-password"
+          data-testid="show-hide-form-password"
+          type="button"
+          onClick={ () => setScreenPassword(!screenPassword) }
+        >
+          Mostrar Senha
+        </button>
       </label>
       <section id="message-password">
         Sua senha deve:
