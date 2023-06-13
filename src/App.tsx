@@ -4,10 +4,12 @@ import Form from './components/Form';
 import Title from './components/Title';
 import { FormTypesId, FormTypes } from './components/types';
 import NewService from './components/NewService';
+import ScreenPasswordBtn from './components/ScreenPasswordBtn';
 
 function App() {
   const [displayForm, setDisplayForm] = useState(true);
   const [passwordArray, setpasswordArray] = useState<FormTypesId[]>([]);
+  const [screenCheckedPassword, setScreenCheckedPassword] = useState(false);
 
   function handleClick() {
     setDisplayForm(false);
@@ -27,6 +29,10 @@ function App() {
     setpasswordArray(filterPassword);
   };
 
+  const handleScreenPasswordBtn = () => {
+    setScreenCheckedPassword(!screenCheckedPassword);
+  };
+
   return (
     <main>
       <Title />
@@ -41,14 +47,23 @@ function App() {
       <div className="list-service">
         {
           passwordArray.length === 0
-            ? (<div>Nenhuma senha cadastrada</div>)
-            : (passwordArray.map(
-              (password) => (<NewService
-                key={ password.id }
-                list={ password }
-                handleDelete={ () => handleDeleteService(password.id) }
-              />),
-            ))
+            && (<div>Nenhuma senha cadastrada</div>)
+        }
+        {
+          passwordArray.length > 0
+          && (<ScreenPasswordBtn
+            handleScreenPasswordBtn={ handleScreenPasswordBtn }
+          />)
+        }
+        {
+          passwordArray.length > 0
+          && (passwordArray.map((password) => (
+            <NewService
+              key={ password.id }
+              list={ password }
+              handleDelete={ () => { handleDeleteService(password.id); } }
+              Password={ screenCheckedPassword }
+            />)))
         }
       </div>
     </main>

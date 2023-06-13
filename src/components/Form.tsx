@@ -60,18 +60,6 @@ function Form({ setDisplayForm, handleForm }: FormProps) {
           onChange={ handleChange }
         />
       </label>
-      <label htmlFor="url">
-        URL
-        <input
-          type="text"
-          name="url"
-          id="url"
-          value={ form.url }
-          onChange={ handleChange }
-        />
-      </label>
-      <button type="submit" disabled={ !validateForm() }>Cadastrar</button>
-      <button type="button" onClick={ () => setDisplayForm(true) }>Cancelar</button>
       <section id="message-password">
         Sua senha deve:
         <p className={ form.password.length > 7 ? valid : invalid }>
@@ -87,6 +75,18 @@ function Form({ setDisplayForm, handleForm }: FormProps) {
           Possuir algum caractere especial
         </p>
       </section>
+      <label htmlFor="url">
+        URL
+        <input
+          type="text"
+          name="url"
+          id="url"
+          value={ form.url }
+          onChange={ handleChange }
+        />
+      </label>
+      <button type="submit" disabled={ !validateForm() }>Cadastrar</button>
+      <button type="button" onClick={ () => setDisplayForm(true) }>Cancelar</button>
     </form>
   );
 }

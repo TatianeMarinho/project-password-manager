@@ -3,9 +3,10 @@ import { FormTypesId } from './types';
 type NewServiceProp = {
   list: FormTypesId;
   handleDelete: (() => void);
+  Password: boolean;
 };
 
-function NewService({ list, handleDelete }: NewServiceProp) {
+function NewService({ list, handleDelete, Password }: NewServiceProp) {
   const { service, login, password, url } = list;
 
   return (
@@ -26,20 +27,13 @@ function NewService({ list, handleDelete }: NewServiceProp) {
       <div>
         Senha:
         {' '}
-        <span>
-          { password }
-        </span>
+        {
+            Password
+              ? <span>******</span>
+              : <span>{ password}</span>
+          }
       </div>
-      <label>
-        Esconder senhas
-        <input
-          type="checkbox"
-          name="screenPassword"
-          id="screenPassword"
-        />
-      </label>
     </>
-
   );
 }
 
